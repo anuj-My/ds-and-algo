@@ -69,7 +69,67 @@ function same2(arr1, arr2) {
 
 // time --> o(n)
 
-console.log(same2([1, 2, 3], [4, 1, 9])); // true
-console.log(same2([1, 2, 3], [1, 9])); // false
-console.log(same2([1, 2, 3], [4, 4, 1])); // false
-console.log(same2([1, 2, 3, 5, 2], [4, 4, 1, 9, 25])); // true
+// console.log(same2([1, 2, 3], [4, 1, 9])); // true
+// console.log(same2([1, 2, 3], [1, 9])); // false
+// console.log(same2([1, 2, 3], [4, 4, 1])); // false
+// console.log(same2([1, 2, 3, 5, 2], [4, 4, 1, 9, 25])); // true
+
+// ? 2. Given two strings, write a function to determine if the second string is an anagram of the first. An anagram is a word, phrase, or name formed by rearranging the letters of another, such as cinema, formed from iceman.
+
+function isAnagram(str1, str2) {
+  if (str1.length !== str2.length) return false;
+
+  const obj1 = {};
+  const obj2 = {};
+
+  for (const val of str1) {
+    obj1[val] = (obj1[val] || 0) + 1;
+  }
+
+  for (const val of str2) {
+    obj2[val] = (obj2[val] || 0) + 1;
+  }
+
+  for (let key in obj1) {
+    if (!(key in obj2)) {
+      return false;
+    }
+
+    if (obj1[key] !== obj2[key]) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+// console.log(isAnagram("", "")); // true
+// console.log(isAnagram("aaz", "zza")); // false
+// console.log(isAnagram("rat", "car")); // false
+// console.log(isAnagram("qwerty", "qeywrt")); // true
+
+function validAnagram(str1, str2) {
+  const obj = {};
+
+  if (str1.length !== str2.length) return false;
+
+  for (const val of str1) {
+    obj[val] = (obj[val] || 0) + 1;
+    // obj[val] ? obj[val]++ : (obj[val] = 1);
+  }
+
+  for (const val of str2) {
+    if (!obj[val]) {
+      return false;
+    } else {
+      obj[val]--;
+    }
+  }
+
+  return true;
+}
+
+console.log(validAnagram("", "")); // true
+console.log(validAnagram("aaz", "zza")); // false
+console.log(validAnagram("rat", "car")); // false
+console.log(validAnagram("qwerty", "qeywrt")); // true
