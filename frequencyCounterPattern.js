@@ -129,7 +129,7 @@ function validAnagram(str1, str2) {
   return true;
 }
 
-console.log(validAnagram("", "")); // true
-console.log(validAnagram("aaz", "zza")); // false
-console.log(validAnagram("rat", "car")); // false
-console.log(validAnagram("qwerty", "qeywrt")); // true
+// console.log(validAnagram("", "")); // true
+// console.log(validAnagram("aaz", "zza")); // false
+// console.log(validAnagram("rat", "car")); // false
+// console.log(validAnagram("qwerty", "qeywrt")); // true
