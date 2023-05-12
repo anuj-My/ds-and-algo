@@ -162,7 +162,8 @@ function primeWithN(n) {
 
 //? only return unique value from the array
 // time complexity --> o(n)
-function uniq_fast(a) {
+
+function removeDuplicates(a) {
   var seen = {};
   var out = [];
   var len = a.length;
@@ -178,8 +179,34 @@ function uniq_fast(a) {
   return out;
 }
 
-// console.log(uniq_fast([1, 1, 2, 3, 1, 4, 5, 5, 6])); // {1: 1, 2: 1 }
+// console.log(removeDuplicates([1, 5, 5, 1, 2, 2, 6, 3, 8, 8]));
 
+function uniqueOnly(a) {
+  var seen = {};
+  var out = [];
+  var len = a.length;
+  var j = 0;
+  for (var i = 0; i < len; i++) {
+    var item = a[i];
+    if (!seen[item]) {
+      seen[item] = 1;
+    } else {
+      seen[item]++;
+    }
+  }
+
+  for (let key in seen) {
+    if (seen[key] === 1) {
+      //   out.push(key);
+      out[j++] = Number(key);
+    }
+  }
+  return out;
+}
+
+console.log(uniqueOnly([1, 1, 2, 3, 1, 4, 5, 5, 6])); // {1: 1, 2: 1 }
+
+//? Return only dulplicate value once in array
 function getDuplicate(arr) {
   const obj = {};
   let j = 0;
@@ -192,7 +219,6 @@ function getDuplicate(arr) {
       obj[item] = 1;
     } else {
       obj[item]++;
-      //   rep[j++] = item;
     }
   }
 
@@ -206,12 +232,12 @@ function getDuplicate(arr) {
   return rep;
 }
 
-console.log(getDuplicate([1, 1, 2, 3, 1, 4, 5, 5, 6]));
+// console.log(getDuplicate([1, 1, 2, 3, 1, 4, 5, 5, 6]));
 
 // ? Duplicate values
+// ? Return all the duplicate values from an array
 const findDuplicate = (arr) => {
   let res = [];
-  let count = 0;
   for (let i = 0; i < arr.length; i++) {
     for (let j = i + 1; j < arr.length; j++) {
       if (arr[i] === arr[j]) {
@@ -229,3 +255,25 @@ const findDuplicate = (arr) => {
 // console.log(findDuplicate([1, 2, 5, 2, 2, 1, 1, 2, 5, 5, 5]));
 // console.log(findDuplicate([1, 2, 5]));
 // console.log(findDuplicate([]));
+
+function getAllDuplicate(arr) {
+  const obj = {};
+  let j = 0;
+  let rep = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    const item = arr[i];
+
+    if (!obj[item]) {
+      obj[item] = 1;
+    } else {
+      obj[item]++;
+      rep[j++] = item;
+    }
+  }
+
+  console.log(obj);
+  return rep;
+}
+
+// console.log(getAllDuplicate([1, 1, 2, 3, 1, 4, 5, 5, 6]));
