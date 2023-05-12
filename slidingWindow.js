@@ -8,11 +8,11 @@ function maxSubarraySum(arr, n) {
 
   for (let i = 0; i < arr.length - n + 1; i++) {
     let temp = 0;
-    console.log(temp);
     for (let j = 0; j < n; j++) {
       temp += arr[i + j];
     }
 
+    console.log(temp);
     if (max < temp) {
       max = temp;
     }
@@ -21,7 +21,33 @@ function maxSubarraySum(arr, n) {
   return max;
 }
 
-console.log(maxSubarraySum([1, 2, 5, 2, 8, 1, 5], 2)); // 10
+// console.log(maxSubarraySum([1, 2, 5, 2, 8, 1, 5], 2)); // 10
 // console.log(maxSubarraySum([1, 2, 5, 2, 8, 1, 5], 4)) // 17
 // console.log(maxSubarraySum([1, 2, 5, 1, 6], 6)) // 6
 // console.log(maxSubarraySum([], 4)) // null
+
+const maxSubarraySum2 = (arr, n) => {
+  let max = 0;
+  let temp = 0;
+
+  if (arr.length < n) return null;
+
+  for (let i = 0; i < n; i++) {
+    temp += arr[i];
+  }
+  max = temp;
+
+  for (let i = n; i < arr.length; i++) {
+    temp = temp - arr[i - n] + arr[i];
+
+    max = temp > max ? temp : max;
+
+    // max = Math.max(max, temp)
+  }
+
+  return max;
+};
+
+console.log(maxSubarraySum2([1, 2, 5, 2, 8, 1, 5], 3));
+console.log(maxSubarraySum([], 4)); // null
+console.log(maxSubarraySum2([1, 2, 5, 2, 8, 1, 5], 2)); // 10
