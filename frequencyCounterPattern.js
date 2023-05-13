@@ -139,3 +139,105 @@ function validAnagram(str1, str2) {
 // console.log(validAnagram("aaz", "zza")); // false
 // console.log(validAnagram("rat", "car")); // false
 // console.log(validAnagram("qwerty", "qeywrt")); // true
+
+// ? 3. Write a function which takes in a string and returns counts of each character in the string.
+
+function charCount(str) {
+  // make object to return at end
+
+  const charObj = {};
+  // loop over string
+
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+
+    // if the char is a number/letter and not in object, add it and set value to 1
+    let code = str.charCodeAt(i);
+    // ! if (/[A-Za-z0-9]/.test(char)) {
+    if (
+      (code > 96 && code < 123) ||
+      (code > 64 && code < 91) ||
+      (code > 47 && code < 58)
+    ) {
+      if (!charObj[char]) {
+        charObj[char] = 1;
+      } else {
+        // if the char is a number/letter and is a key in object, add one to count
+        charObj[char]++;
+      }
+    }
+  }
+  //   if char is something else (space, period etc ) don't do anthing
+  // return object at the end
+  return charObj;
+}
+
+// TIME COMPLEXITY --> o(n)
+
+// console.log(charCount("@HELLO world"));
+// console.log(charCount("Pin Number is @1234!"));
+
+// ? 4. Write a function called sameFrequency.Given two positive integers, find out if the two numbers have the same frequency of digits.
+
+const sameFrequency = (n1, n2) => {
+  if (!n1 || !n2) return false;
+
+  let num1 = String(n1);
+  let num2 = String(n1);
+
+  let obj1 = {};
+  let obj2 = {};
+
+  for (const i of num1) {
+    obj1[i] = (obj1[i] || 0) + 1;
+  }
+
+  for (const j of num2) {
+    obj2[j] = (obj2[j] || 0) + 1;
+  }
+
+  for (const key in obj1) {
+    if (obj2[key] === obj1[key]) {
+      return true;
+    }
+  }
+
+  return false;
+};
+
+// console.log(sameFrequency(182, 281));
+// console.log(sameFrequency(34, 14));
+// console.log(sameFrequency(3589578, 5879385));
+// console.log(sameFrequency());
+
+// ? 5. Implement a function called, areThereDuplicates which accepts a variable number of arguments, and checks whether there any duplicates among the argument passed in.
+
+const areThereDuplicates = (...arr) => {
+  let obj = {};
+
+  // for (let i = 0; i < arr.length; i++) {
+  //   const item = arr[i];
+
+  //   obj[item] = (obj[item] || 0) + 1;
+  // }
+
+  // for (const key in obj) {
+  //   if (obj[key] > 1) return true;
+  // }
+
+  // ! shorter way
+
+  for (const i of arr) {
+    if (!obj[i]) {
+      obj[i] = 1;
+    } else {
+      return true;
+    }
+  }
+
+  return false;
+};
+
+console.log(areThereDuplicates(1, 2, 3));
+console.log(areThereDuplicates(1, 2, 2));
+console.log(areThereDuplicates("a", "b", "c", "a"));

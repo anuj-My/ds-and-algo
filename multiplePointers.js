@@ -64,8 +64,31 @@ function countUniqueValues(arr) {
   return i + 1;
 }
 
-console.log(countUniqueValues([1, 1, 1, 1, 2]));
-console.log(countUniqueValues([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13]));
-console.log(countUniqueValues([-2, -1, -1, 0, 1]));
-console.log(countUniqueValues([1, 1, 1, 1]));
-console.log(countUniqueValues([]));
+// console.log(countUniqueValues([1, 1, 1, 1, 2]));
+// console.log(countUniqueValues([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13]));
+// console.log(countUniqueValues([-2, -1, -1, 0, 1]));
+// console.log(countUniqueValues([1, 1, 1, 1]));
+// console.log(countUniqueValues([]));
+
+// ? 3. Implement a function called, areThereDuplicates which accepts a variable number of arguments, and checks whether there any duplicates among the argument passed in.
+
+// only works with sorted array
+const areThereDuplicates = (...arr) => {
+  let j = 0;
+
+  for (let i = j + 1; i < arr.length; i++) {
+    const item = arr[i];
+
+    if (item !== arr[j]) {
+      j++;
+    } else {
+      return true;
+    }
+  }
+
+  return false;
+};
+
+console.log(areThereDuplicates(1, 2, 3));
+console.log(areThereDuplicates(1, 2, 2));
+console.log(areThereDuplicates("a", "a", "b", "c"));
