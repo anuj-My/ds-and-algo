@@ -204,7 +204,7 @@ function uniqueOnly(a) {
   return out;
 }
 
-console.log(uniqueOnly([1, 1, 2, 3, 1, 4, 5, 5, 6])); // {1: 1, 2: 1 }
+// console.log(uniqueOnly([1, 1, 2, 3, 1, 4, 5, 5, 6])); // {1: 1, 2: 1 }
 
 //? Return only dulplicate value once in array
 function getDuplicate(arr) {
@@ -234,28 +234,7 @@ function getDuplicate(arr) {
 
 // console.log(getDuplicate([1, 1, 2, 3, 1, 4, 5, 5, 6]));
 
-// ? Duplicate values
-// ? Return all the duplicate values from an array
-const findDuplicate = (arr) => {
-  let res = [];
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = i + 1; j < arr.length; j++) {
-      if (arr[i] === arr[j]) {
-        res.push(arr[i]);
-        break;
-      }
-    }
-  }
-
-  return res;
-};
-
-// console.log(findDuplicate([1, 2, 2, 1]));
-// console.log(findDuplicate([1, 2, 5, 1, 8, 1, 5]));
-// console.log(findDuplicate([1, 2, 5, 2, 2, 1, 1, 2, 5, 5, 5]));
-// console.log(findDuplicate([1, 2, 5]));
-// console.log(findDuplicate([]));
-
+// ? get All the Duplicate
 function getAllDuplicate(arr) {
   const obj = {};
   let j = 0;
@@ -268,7 +247,15 @@ function getAllDuplicate(arr) {
       obj[item] = 1;
     } else {
       obj[item]++;
-      rep[j++] = item;
+    }
+  }
+
+  for (let key in obj) {
+    if (obj[key] > 1) {
+      for (let i = 1; i <= obj[key]; i++) {
+        rep[j++] = Number(key);
+        // rep.push(key)
+      }
     }
   }
 
@@ -276,4 +263,28 @@ function getAllDuplicate(arr) {
   return rep;
 }
 
-// console.log(getAllDuplicate([1, 1, 2, 3, 1, 4, 5, 5, 6]));
+console.log(getAllDuplicate([1, 1, 2, 3, 1, 4, 5, 5, 6]));
+
+
+
+// ? Duplicate values
+// ? Return all the duplicate values from an array
+const findDuplicate = (arr) => {
+    let res = [];
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = i + 1; j < arr.length; j++) {
+        if (arr[i] === arr[j]) {
+          res.push(arr[i]);
+          break;
+        }
+      }
+    }
+  
+    return res;
+  };
+  
+  // console.log(findDuplicate([1, 2, 2, 1]));
+  // console.log(findDuplicate([1, 2, 5, 1, 8, 1, 5]));
+  // console.log(findDuplicate([1, 2, 5, 2, 2, 1, 1, 2, 5, 5, 5]));
+  // console.log(findDuplicate([1, 2, 5]));
+  // console.log(findDuplicate([]));
