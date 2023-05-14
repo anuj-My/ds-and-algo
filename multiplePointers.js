@@ -95,7 +95,7 @@ const areThereDuplicates = (...arr) => {
 
 // ? 4. Write a function called averagePair. Given a sorted array of integers and a target average, determine if there is a pair of values in the array where the average of the pair equals the target average. There may be more than one pair that matches the average target.
 
-function averagePair(arr, target) {
+const averagePair = (arr, target) => {
   let first = 0;
   let last = arr.length - 1;
 
@@ -112,9 +112,30 @@ function averagePair(arr, target) {
   }
 
   return false;
-}
+};
 
-console.log(averagePair([1, 2, 3], 2.5));
-console.log(averagePair([1, 3, 3, 5, 6, 7, 10, 12, 19], 8));
-console.log(averagePair([-1, 0, 3, 4, 5, 6], 4.1));
-console.log(averagePair([], 4));
+// console.log(averagePair([1, 2, 3], 2.5));
+// console.log(averagePair([1, 3, 3, 5, 6, 7, 10, 12, 19], 8));
+// console.log(averagePair([-1, 0, 3, 4, 5, 6], 4.1));
+// console.log(averagePair([], 4));
+
+// Multiple Pointers - isSubsequence
+
+// ? 5. Write a function called isSubsequence which takes in two strings and checks whether the characters in the first string form a subsequence of the characters in the second string. In other words, the function should check whether the characters in the first string appear somewhere in the second string, without their order changing.
+
+const isSubsequence = (str1, str2) => {
+  let i = 0;
+
+  for (const j of str2) {
+    if (str1[i] === j) {
+      i++;
+    }
+  }
+
+  return str1.length === i;
+};
+
+console.log(isSubsequence("hello", "hello world"));
+console.log(isSubsequence("sing", "sting"));
+console.log(isSubsequence("abc", "abracadabra"));
+console.log(isSubsequence("abc", "acb"));
