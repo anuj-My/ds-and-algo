@@ -22,6 +22,19 @@ const countElementInArray = (arr) => {
 // console.log(countElementInArray([1, 2, 5, 2, 8, 1, 5]));
 // console.log(countElementInArray([]));
 
+// ? Largest
+const num = [15, 12, 1, 13];
+
+const largest = num.reduce((prev, next) => {
+  if (prev > next) {
+    return prev;
+  } else {
+    return next;
+  }
+});
+
+console.log(largest);
+
 //? sum of two number equal to TARGET!
 const sum = (arr, target) => {
   if (arr.length === 0) return [];
@@ -265,26 +278,24 @@ function getAllDuplicate(arr) {
 
 console.log(getAllDuplicate([1, 1, 2, 3, 1, 4, 5, 5, 6]));
 
-
-
 // ? Duplicate values
 // ? Return all the duplicate values from an array
 const findDuplicate = (arr) => {
-    let res = [];
-    for (let i = 0; i < arr.length; i++) {
-      for (let j = i + 1; j < arr.length; j++) {
-        if (arr[i] === arr[j]) {
-          res.push(arr[i]);
-          break;
-        }
+  let res = [];
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] === arr[j]) {
+        res.push(arr[i]);
+        break;
       }
     }
-  
-    return res;
-  };
-  
-  // console.log(findDuplicate([1, 2, 2, 1]));
-  // console.log(findDuplicate([1, 2, 5, 1, 8, 1, 5]));
-  // console.log(findDuplicate([1, 2, 5, 2, 2, 1, 1, 2, 5, 5, 5]));
-  // console.log(findDuplicate([1, 2, 5]));
-  // console.log(findDuplicate([]));
+  }
+
+  return res;
+};
+
+// console.log(findDuplicate([1, 2, 2, 1]));
+// console.log(findDuplicate([1, 2, 5, 1, 8, 1, 5]));
+// console.log(findDuplicate([1, 2, 5, 2, 2, 1, 1, 2, 5, 5, 5]));
+// console.log(findDuplicate([1, 2, 5]));
+// console.log(findDuplicate([]));

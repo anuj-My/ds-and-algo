@@ -20,7 +20,6 @@ function maxSubarraySum(arr, n) {
       temp += arr[i + j];
     }
 
-    console.log(temp);
     if (max < temp) {
       max = temp;
     }
@@ -56,6 +55,35 @@ const maxSubarraySum2 = (arr, n) => {
   return max;
 };
 
-console.log(maxSubarraySum2([1, 2, 5, 2, 8, 1, 5], 3));
-console.log(maxSubarraySum([], 4)); // null
-console.log(maxSubarraySum2([1, 2, 5, 2, 8, 1, 5], 2)); // 10
+// console.log(maxSubarraySum2([1, 2, 5, 2, 8, 1, 5], 3));
+// console.log(maxSubarraySum([], 4)); // null
+// console.log(maxSubarraySum2([1, 2, 5, 2, 8, 1, 5], 2)); // 10
+
+// ? 2.Given an array of integers and a number, write a function called maxSubarraySum, which finds the maximum sum of a subarray with the length of the number passed to the function.
+
+const maxSubarraySum3 = (arr, n) => {
+  if (arr.length < n) return null;
+
+  let max = -Infinity;
+  let temp = 0;
+  for (let i = 0; i < n; i++) {
+    temp += arr[i];
+  }
+
+  max = temp;
+
+  for (let j = n; j < arr.length; j++) {
+    const item = arr[j];
+    temp = temp + item - arr[j - n];
+
+    max = temp > max ? temp : max;
+  }
+
+  return max;
+};
+
+// console.log(maxSubarraySum3([100, 200, 300, 400], 2));
+// console.log(maxSubarraySum3([-3, 4, 0, -2, 6, -1], 2));
+// console.log(maxSubarraySum3([1, 4, 2, 10, 23, 3, 1, 0, 20], 4));
+
+
