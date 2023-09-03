@@ -23,7 +23,7 @@ To get started with this project, follow these steps:
 
 ```bash
 # Clone the repository
-git clone https://github.com/anuj-My/ds-and-algo/
+git clone https://github.com/anuj-My/ds-and-algo.git
 
 # Change into the project directory
-cd your-repo
+cd ds-and-algo
