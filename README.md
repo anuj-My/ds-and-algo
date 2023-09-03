@@ -11,11 +11,6 @@ Welcome to the Data Structures and Algorithms in JavaScript repository. This pro
 ## Table of Contents
 
 - [Installation](#installation)
-- [Usage](#usage)
-- [Data Structures](#data-structures)
-- [Algorithms](#algorithms)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Installation
 
